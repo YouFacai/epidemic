@@ -18,7 +18,9 @@
         /* 主要模块 */
         #homepage,
         #referral,
-        #gameList {
+        #gameList，
+        #chainMap,
+        #outvirus {
             transition: 2s;
         }
 
@@ -70,6 +72,7 @@
         #referral {
             position: absolute;
             z-index: 1;
+            opacity: 0;
             top: 0;
             width: 100%;
             height: 100%;
@@ -94,12 +97,32 @@
             text-align: center;
             font-size: 30px;
             margin-bottom: 20px;
+            font-weight: bold;
         }
 
         /* 内容 */
         #font_content {
+            font-weight: bold;
             letter-spacing: 2px;
             text-indent:2em;
+        }
+
+        /* 了解更多 */
+        #more {
+            /* display: none; */
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            margin-left: -18%;
+            bottom: 10%;
+            width: 36%;
+            height: 10%;
+            transition: 2s;
+        }
+
+        #more img {
+            width: 100%;
+            height: 100%;
         }
 
         /* 第三个模块选项 */
@@ -129,6 +152,116 @@
             width: 100%;
             height: 100%;
         }
+
+        /* 地图模块 */
+        #chainMap {
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(243, 211, 186);
+        }
+
+        #CMap {
+            width: 100%;
+            position: absolute;
+            height: 100%;
+        }
+
+        /* 上背景 */
+        .chainMap_bg1 {
+            position: absolute;
+            background: url('./public/img/dituup.png');
+            background-size: 100% 100%;
+            width: 100%;
+            height: 20%;
+            /* z-index: 9; */
+        }
+
+        /* 下背景 */
+        .chainMap_bg2 {
+            position: absolute;
+            background: url('./public/img/ditudown.png');
+            background-size: 100% 100%;
+            width: 100%;
+            height: 20%;
+            bottom: 0;
+            /* z-index: 9; */
+        }
+
+        /* 返回箭头 */
+        .leftBoult {
+            position: absolute;
+            margin-left: 10px;
+            background: url('./public/img/jt.png');
+            background-size: 100% 100%;
+            width: 40px;
+            height: 50px;
+            opacity: 0.5;
+        }
+
+        /* 消灭病毒模块 */
+        #outvirus {
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./public/img/yx.jpg');
+            background-color: white;
+            background-size: 100% 100%;
+        }
+
+        /* 病毒图片 */
+        .outvirus_img {
+            transition: 0.2s;
+            width: 100px;
+            height: 100px;
+        }
+
+        .outvirus_img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 病毒定位 */
+        .bd1 {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+        }
+
+        .bd2 {
+            position: absolute;
+            top: 40%;
+            left: 20%;
+        }
+
+        .bd3 {
+            position: absolute;
+            top: 20%;
+            left:70%;
+        }
+
+        .bd4 {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+        }
+
+        /* 计分板(通用) */
+        .integral {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            top: 50%;
+            width: 100%;
+            font-weight: 600;
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -148,12 +281,16 @@
     </div>
 
     <!-- @2 模块二介绍 style要删除 -->
-    <div id="referral">
+    <div id="referral" >
         <div class=" referral_box">
             <!-- 标题部分 -->
-            <div class="referral_title">标题a</div>
+            <div class="referral_title">祖国伟大</div>
             <!-- 内容部分 -->
             <div id="font_content"></div>
+        </div>
+        <!-- 了解更多 -->
+        <div id="more">
+            <img src="./public/img/a.png" alt="">
         </div>
     </div>
 
@@ -172,9 +309,43 @@
             <img src="./public/img/quan1.png" alt="">
         </div>
     </div>
+
+    <!-- @4 1 地图细节模块 -->
+    <div id="chainMap" >
+        <div id="CMap"></div>
+        <div class="chainMap_bg1"></div>
+        <div class="chainMap_bg2"></div>
+        <!-- 箭头 -->
+        <div class="leftBoult"></div>
+    </div>
+
+    <!-- @4 2 消灭病毒 -->
+    <div id="outvirus">
+        <!-- 返回箭头 -->
+        <div class="leftBoult"></div>
+
+        <!-- 计分板模板 -->
+        <div class="integral"></div>
+        <div class="outvirus_img bd1">
+            <img src="./public/img/be.png" alt="">
+        </div>
+        <div class="outvirus_img bd2">
+            <img src="./public/img/bb.png" alt="">
+        </div>
+        <div class="outvirus_img bd3">
+            <img src="./public/img/bc.png" alt="">
+        </div>
+        <div class="outvirus_img bd4">
+            <img src="./public/img/bd.png" alt="">
+        </div>
+    </div>
+
     <script src="./js/utils.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.1/echarts.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="./js/chinaMap.js"></script>
     <script src="./js/index.js"></script>
     <script type="module" src="./js/swiper.js"></script>
 </body>
-
 </html>

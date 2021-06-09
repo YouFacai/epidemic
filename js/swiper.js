@@ -16,7 +16,7 @@ const render = function render(inital) {
 
     // 控制slide的样式
     let temp1 = step - 1,
-        temp2 = step ,
+        temp2 = step,
         temp3 = step + 1
     if (temp1 < 0) temp1 = len + temp1;
     if (temp3 > len - 1) temp3 = temp3 - len;
@@ -66,7 +66,7 @@ const render = function render(inital) {
             }
         } = item;
         str += `<div class="${className}" style="${sty}">
-            <img src="${pic}" alt="" />
+            <img src='${pic}' data-index='${item.id}' alt="" />
         </div>`;
     });
     wrapper.innerHTML = str;
@@ -101,11 +101,11 @@ delay().then(() => {
     // 开启自动轮播
     autoMove();
 
-   /*  // 控制自动轮播的暂停/开始
-    container.onmouseenter = () => clearInterval(autoTimer);
-    container.onmouseleave = () => autoMove(); */
+    /*  // 控制自动轮播的暂停/开始
+     container.onmouseenter = () => clearInterval(autoTimer);
+     container.onmouseleave = () => autoMove(); */
 
-    // 左右切换   扩展：事件委托
+    // 左右切换  
     buttonNext.onclick = utils.throttle(() => {
         step++;
         if (step > source.length - 1) step = 0;
@@ -116,4 +116,17 @@ delay().then(() => {
         if (step < 0) step = source.length - 1;
         render();
     }, 1000);
+
+    //事件委托
+    container.onclick = function (e) {
+        let index = e.target.getAttribute('data-index');
+        switch (index) {
+            case "1":
+                fadeOver(gameList, chainMap);
+                break;
+            case "2":
+                fadeOver(gameList, outvirus);
+                break;
+        }
+    }
 });

@@ -1,7 +1,9 @@
 ~function () {
     // 点击播放按钮放歌
     let timer = null,
-        Deg = 0;
+        Deg = 0,
+        // 病毒list
+        virusList = outvirus.getElementsByClassName('outvirus_img');
     const playMusic = function playMusic(init) {
         // 取出标识 更换图片 1正在播放 0停止
         let state = /(\d)_music/.exec(GoMusic_img.src)[1];
@@ -37,6 +39,7 @@
         typer();
         return fadeOver(homepage, referral)
     })
+
     // 切换淡出效果
     const fadeOver = function (quit, enter) {
         quit.style.opacity = 0;
@@ -58,17 +61,54 @@
                 timer = setInterval(() => {
                     let tempStr = str.slice(0, 1);
                     str = str.slice(1);
-                    font_content.innerHTML+= tempStr;
-                    if(str.length===0){
+                    font_content.innerHTML += tempStr;
+                    if (str.length === 0) {
                         clearInterval(timer);
                         timer = null;
-                        fadeOver(referral,gameList)
+                        // 显示更多
+                        more.style.display = 'block'
+                        more.style.width
+                        more.style.opacity = 1;
                     }
-                }, 100);
-            }, 2000);
+                }, 10);
+            }, 3000);
         })
     }
 
+    // 第二个页面点击更多 跳转
+    const tapmore = function tapmore() {
+        fadeOver(referral, gameList)
+    }
+
+    // (地图)点击按钮返回
+    chainMap.getElementsByClassName("leftBoult")[0].onclick = function () {
+        fadeOver(chainMap, gameList);
+    }
+
+    // (病毒)点击按钮返回
+    outvirus.getElementsByClassName("leftBoult")[0].onclick = function () {
+        fadeOver(outvirus, gameList);
+    }
+
+    // 消灭病毒/拾取物品 模块
+    // 点击病毒病毒消失
+    const clearvirus = function clearvirus(NodeList) {
+        // 计数
+        let count = 0;
+        NodeList = Array.from(NodeList);
+        NodeList.forEach((item, index) => {
+            item.onclick = function (e) {
+                outvirus.getElementsByClassName('integral')[0].innerHTML = `消灭:${++count}`
+                e.target.src = ''
+            }
+        })
+    }
+
+    clearvirus(virusList);
+    more.onclick = tapmore;
     GoMusic.onclick = playMusic;
-    playMusic(false)
+    playMusic(false);
+
+    // 淡出模块导出一下
+    window.fadeOver = fadeOver
 }()
