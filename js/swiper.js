@@ -107,9 +107,9 @@ delay().then(() => {
     // 开启自动轮播
     autoMove();
 
-    // 控制自动轮播的暂停/开始
+   /*  // 控制自动轮播的暂停/开始
     container.onmouseenter = () => clearInterval(autoTimer);
-    container.onmouseleave = () => autoMove();
+    container.onmouseleave = () => autoMove(); */
 
     // 左右切换   扩展：事件委托
     buttonNext.onclick = utils.throttle(() => {
