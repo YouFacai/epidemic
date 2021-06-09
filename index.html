@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>疫情防控</title>
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/swiper.css">
     <style>
-        html,body {
+        html,
+        body {
             width: 100%;
             height: 100%;
+        }
+
+        /* 主要模块 */
+        #homepage,
+        #referral,
+        #gameList {
+            transition: 2s;
         }
 
         #homepage {
-            position: relative;
+            /* display: none; */
+            position: absolute;
+            z-index: 2;
             width: 100%;
             height: 100%;
-            background:url('./public/img/0001.jpg');
+            background: url('./public/img/0001.jpg');
             background-size: 100% 100%;
         }
 
-        .btn{
+        .btn {
             position: absolute;
             left: 50%;
             bottom: 25%;
-            width: 45%;
-            height: 8%;  
-            margin: -20%;
+            width: 36%;
+            height: 8%;
+            margin: -18%;
         }
 
-        .btn .font {
+        /* .btn .font {
           text-align: center;
           top: 65%;
           font-weight: 600;
           color: rgb(255, 255, 255);
           position: relative;
-        }
+        } */
 
         /* 入口按钮图片 */
         .entrance {
+            position: relative;
+            top: 0;
             width: 100%;
             height: 100%;
         }
@@ -47,19 +61,81 @@
         #GoMusic {
             position: absolute;
             width: 7%;
-            height: 4%;
+            height:4%;
             right: 5%;
             top: 4%;
-            z-index: 10;
+            z-index: 3;
         }
 
         #GoMusic img {
             width: 100%;
             height: 100%;
-            transform: ;
+        }
+
+        /* 第二个模块 */
+        #referral {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./public/img/xianga.jpg');
+            background-size: 100% 100%;
+        }
+
+        /* 打字机外框 */
+        .referral_box {
+            position: absolute;
+            width: 100%;
+            top: 0%;
+            padding: 18%;
+        }
+
+        .referral_box li {
+            width: 100%;
+        }
+
+        /* 标题 */
+        .referral_title{
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* 内容 */
+        .font_content{
+            text-align: center;
+        }
+
+        /* 第三个模块选项 */
+        #gameList {
+            position: absolute;
+            opacity: 0;
+            z-index: 1;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./public/img/suoyins.jpg');
+            background-size: 100% 100%;
+        }
+
+        /* 拳头控件 */
+        #hand_btn {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -60px;
+            width: 120px;
+            height: 150px;
+        }
+
+        #hand_btn img {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
+
 <body>
     <!-- GO音乐旋转 -->
     <div id="GoMusic">
@@ -71,11 +147,47 @@
     <div id="homepage">
         <!-- 按钮控件 -->
         <div class="btn">
-            <!-- 改动 -->
-            <div class="font">中国加油</div>
-            <img class="entrance" src="./public/img/home_btn.png" alt="">
+            <img class="entrance" src="./public/img/jiayoubb.png" alt="">
         </div>
     </div>
+
+    <!-- @2 模块二介绍 style要删除 -->
+    <div id="referral" ">
+        <div class="referral_box">
+            <!-- 标题部分 -->
+            <div class="referral_title">标题</div>
+            <!-- 内容部分 -->
+            <div id="font_content"></div>
+        </div>
+    </div>
+
+    <!-- @3 模块三 -->
+    <div id="gameList" style="z-index: 10;opacity: 1;">
+        <div class="container" id="container">
+            <!-- 轮播图区域 -->
+            <div class="wrapper">
+                <!-- <div class="slide">
+                    <img src="images/01.jpg" alt="" />
+                    <div class="mark"></div>
+                    <p class="detail">
+                        <span>蒙奇·D·路飞</span>
+                        <span>身份：草帽海贼团船长</span>
+                        <span>梦想：找到ONE PIECE，并成为海贼王</span>
+                    </p>
+                </div> -->
+            </div>
+            <!-- 左右切换按钮 -->
+            <a href="javascript:;" class="button button-prev"></a>
+            <a href="javascript:;" class="button button-next"></a>
+        </div>
+        <!-- 拳头按钮 -->
+        <div id="hand_btn">
+            <img src="./public/img/quan1.png" alt="">
+        </div>
+    </div>
+    <script src="./js/utils.min.js"></script>
     <script src="./js/index.js"></script>
+    <script type="module" src="./js/swiper.js"></script>
 </body>
+
 </html>
