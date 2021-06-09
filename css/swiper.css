@@ -87,8 +87,8 @@
     transform: translateY(-50%);
     width: 39px;
     height: 80px;
-    background: url("../images/btn.png") no-repeat center center;
-    opacity: 1;
+    background: url("../public/img/btn.png") no-repeat center center;
+    opacity: 0.2 !important;
     transition: opacity .3s ease;
 }
 

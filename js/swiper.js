@@ -67,12 +67,6 @@ const render = function render(inital) {
         } = item;
         str += `<div class="${className}" style="${sty}">
             <img src="${pic}" alt="" />
-            <div class="mark"></div>
-            <p class="detail">
-                <span>${name}</span>
-                <span>身份：${identity}</span>
-                <span>梦想：${dream}</span>
-            </p>
         </div>`;
     });
     wrapper.innerHTML = str;
