@@ -44,10 +44,8 @@
     const fadeOver = function (quit, enter) {
         quit.style.opacity = 0;
         enter.style.opacity = 1;
-        setTimeout(() => {
-            quit.style.zIndex = 1;
+            quit.style.zIndex = 0;
             enter.style.zIndex = 2;
-        }, 2000);
     }
 
     // 打字机效果
